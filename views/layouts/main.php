@@ -44,6 +44,10 @@ AppAsset::register($this);
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
+                '<li>'.
+                    '<a href="/skinatech/web/users/update?id='.  Yii::$app->user->identity->id .'">'.
+                    'Editar Perfil</a>'.
+                '</li>'.
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(

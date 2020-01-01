@@ -23,7 +23,7 @@ class UsersController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'update', 'delete'],
+                'only' => ['create', 'update', 'delete', 'index'],
                 'rules' => [
                     [
                         'actions' => ['create',  'delete'],
@@ -63,7 +63,22 @@ class UsersController extends Controller
                         }
                     ],
 
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+
+                            //Si el usuario es invitado retorne false
+                            if (Yii::$app->user->isGuest)  return false;
+                            //Si el rol admin devuelve true
+                            if (Yii::$app->user->identity->rol == 1) return true;
+                            return false;
+                        }
+                    ],
+                    
                 ],
+                
             ],
 
             'verbs' => [
