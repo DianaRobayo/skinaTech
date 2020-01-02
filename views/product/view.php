@@ -7,8 +7,8 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Product */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+/* $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title; */
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="product-view">

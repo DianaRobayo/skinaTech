@@ -5,14 +5,17 @@
 use yii\helpers\Html;
 
 $this->title = 'About';
-$this->params['breadcrumbs'][] = $this->title;
+/* $this->params['breadcrumbs'][] = $this->title; */
 ?>
 <div class="site-about">
+    
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        This is the About page. You may modify the following file to customize its content:
+    <p> La empresa Skina Tech se dedica a la venta y distribución de dispositivos
+        electrónicos para diversas áreas (Redes, Computación, Móvil y Electrodomésticos).
+        Permite la compra y venta de diferentes productos, directamente desde nuestra página. 
+        Con precios economicos y de buena calidad 
     </p>
 
-    <code><?= __FILE__ ?></code>
+    <!-- <code><?= __FILE__ ?></code> -->
 </div>

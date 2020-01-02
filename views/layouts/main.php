@@ -9,6 +9,48 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
+
+
+$baseUrl =  Url::home();
+
+// Seccion de los items
+$items = [
+  ['label' => 'Home', 'url' => ['/site/index'], 'options' => ['class' => 'clase-nueva']],
+  ['label' => 'About', 'url' => ['/site/about']],
+  ['label' => 'Contact', 'url' => ['/site/contact']]
+];
+
+if(Yii::$app->user->isGuest){
+  $items[] = ['label' => 'Login', 'url' => ['/site/login']];
+
+} else {  
+  //$items[] = ['label' => 'Logout', 'url' => [$baseUrl . 'users/update?id=' .  Yii::$app->user->identity->id]];
+  
+  if(Yii::$app->user->identity->rol == 2){
+    $items[] = ['label' => 'Edit Perfil', 'url' => ['/users/update?id=' .  Yii::$app->user->identity->id]];
+    $items[] = ['label' => 'Category', 'url' => ['/vista-tablas']];
+    
+  } else {
+    $items[] = ['label' => 'Category', 'url' => ['/category']];
+    $items[] = ['label' => 'Subcategory', 'url' => ['/subcategory']];
+    $items[] = ['label' => 'Product', 'url' => ['/product']];
+    $items[] = ['label' => 'Users', 'url' => ['/users']];
+  }
+
+  $items[] = Html::beginForm(['/site/logout'], 'post');
+  $items[] = Html::submitButton(
+    'Logout (' . Yii::$app->user->identity->name . ')', //Retorna el nombre del usuario al iniciar sesion
+    ['class' => 'btn btn-link logout', 'id' => 'logout']
+  );
+  $items[] = Html::endForm();
+
+  /* echo '<pre>';
+  print_r(Yii::$app->name);
+  exit;
+ */
+}
+
 
 AppAsset::register($this);
 ?>
@@ -27,17 +69,19 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <?php
+  <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'SKINATECH', //Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top',
+            //navbar navbar-light bg-light
+            //navbar-inverse navbar-fixed-top
         ],
-    ]);
+    ]); 
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
+        'items' => $items /* [
+            
             ['label' => 'Home', 'url' => ['/site/index'],'options' => ['class'=>'clase-nueva']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
@@ -57,25 +101,28 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             )
-        ],
+        ] */,
+        'options' => ['class' => 'navbar navbar-dark bg-dark'],
+        //navbar navbar-dark bg-dark
+        //navbar-nav navbar-left
+        
     ]);
     NavBar::end();
-    ?>
+  ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
+  <div class="container">
+      <?= Breadcrumbs::widget([
+          'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+      ]) ?>
+      <?= Alert::widget() ?>
+      <?= $content ?>
+  </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; Diana Robayo <?= date('Y') ?></p>
+       <!--  <p class="pull-right"><?= Yii::powered() ?></p> -->
     </div>
 </footer>
 

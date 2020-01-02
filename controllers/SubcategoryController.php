@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Subcategory;
 use app\models\SubcategorySearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,14 +20,36 @@ class SubcategoryController extends Controller
      */
     public function behaviors()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
+      return [
+        'access' => [
+        'class' => AccessControl::className(),
+        'only' => ['create', 'update', 'delete'],
+        'rules' => [
+            [
+              'actions' => ['create', 'update', 'delete'],
+              'allow' => true,
+              'roles' => ['@'],
+              'matchCallback' => function ($rule, $action) {
+
+                //Si el usuario es invitado no tiene permiso
+                if (Yii::$app->user->isGuest)  return false;
+                //Si el rol es diferente al admin  no tiene permiso
+                if (Yii::$app->user->identity->rol != 1) return false;
+                //Si es admin tiene permiso
+                return true;                           
+              }
             ],
-        ];
+
+          ],
+        ],
+
+        'verbs' => [
+            'class' => VerbFilter::className(),
+            'actions' => [
+                'delete' => ['POST'],
+            ],
+        ],
+      ];
     }
 
     /**

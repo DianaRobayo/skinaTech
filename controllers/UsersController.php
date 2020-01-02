@@ -20,74 +20,74 @@ class UsersController extends Controller
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['create', 'update', 'delete', 'index'],
-                'rules' => [
-                    [
-                        'actions' => ['create',  'delete'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
+      return [
+        'access' => [
+          'class' => AccessControl::className(),
+          'only' => ['create', 'update', 'delete', 'index'],
+          'rules' => [
+              [
+                'actions' => ['create',  'delete'],
+                'allow' => true,
+                'roles' => ['@'],
+                'matchCallback' => function ($rule, $action) {
 
-                            //Si el usuario es invitado retorne false
-                            if (Yii::$app->user->isGuest)  return false;
-                            //Si el rol es diferente a 1 retorna false
-                            if (Yii::$app->user->identity->rol != 1) return false;
-                            return true;
-                        }
-                    ],
+                  //Si el usuario es invitado no tiene permiso
+                  if (Yii::$app->user->isGuest)  return false;
+                  //Si el rol es diferente al admin  no tiene permiso
+                  if (Yii::$app->user->identity->rol != 1) return false;
+                  //Si es admin tiene permiso
+                  return true;
+                }
+              ],
 
-                    [
-                        'actions' => ['update'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
+              [
+                'actions' => ['update'],
+                'allow' => true,
+                'roles' => ['@'],
+                'matchCallback' => function ($rule, $action) {
 
-                            // El usuario es invitado
-                            if (Yii::$app->user->isGuest)  return false;
-                            // El usuario es administrador
-                            if (Yii::$app->user->identity->rol == 1) return true;
-                            // El usuario no es administrador
-                            $idUpdateUser = Yii::$app->getRequest()->getQueryParam('id');
-                            $idCurrentUser = Yii::$app->user->identity->id;
-                            if ($idCurrentUser != $idUpdateUser) {
-                                return FALSE;
-                            }
-                            return TRUE;
-                            // print_r(Yii::$app->getRequest()->getQueryParam('id'));
-                            // exit;
-                            //if (Yii::$app->user->identity->rol != 2) return false;
-                            return true;
-                        }
-                    ],
+                  // El usuario es invitado no tiene permiso
+                  if (Yii::$app->user->isGuest)  return false;
+                  // El usuario es administrador tiene permiso
+                  if (Yii::$app->user->identity->rol == 1) return true;
 
-                    [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
+                  //Se obtiene el query param id, de la pag de actualizacion actual
+                  $idUpdateUser = Yii::$app->getRequest()->getQueryParam('id');
+                  //Se obtiene el id, del usuario loggeado
+                  $idCurrentUser = Yii::$app->user->identity->id;
+                  if ($idCurrentUser != $idUpdateUser) {
+                      return FALSE;
+                  }
+                  return TRUE;
+                }
+              ],
 
-                            //Si el usuario es invitado retorne false
-                            if (Yii::$app->user->isGuest)  return false;
-                            //Si el rol admin devuelve true
-                            if (Yii::$app->user->identity->rol == 1) return true;
-                            return false;
-                        }
-                    ],
-                    
-                ],
-                
-            ],
+              [
+                //Se crea otro permiso para que solo el administrador pueda visualizar todos los usuarios
+                'actions' => ['index'],
+                'allow' => true,
+                'roles' => ['@'],
+                'matchCallback' => function ($rule, $action) {
 
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
+                    //Si el usuario es invitado, no tiene permisos
+                    if (Yii::$app->user->isGuest)  return false;
+                    //Si el rol admin tiene permisos
+                    if (Yii::$app->user->identity->rol == 1) return true;
+                    return false;
+                }
+              ],
+              
+          ],
+            
+        ],
+
+        'verbs' => [
+          'class' => VerbFilter::className(),
+          'actions' => [
+              'delete' => ['POST'],
+          ],
+        ],
+      ];
     }
 
     /**

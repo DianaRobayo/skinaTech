@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    font-size: 12px;
 }
 
 .wrap {
@@ -112,4 +113,62 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+
+/*Customer*/
+
+/* Seccion index */
+h2 {
+ color: #0a2d6e;
+  font-weight: normal;
+  font-size: 20px;
+  font-family: Helvetica;
+  /* text-transform: uppercase; */
+}
+
+ul .list-group-item{
+    border-bottom: ridge;
+}
+
+#w0-collapse{
+    font-size: 14px;
+}
+
+#logout{
+  font-size: 14px;  
+}
+
+.navbar-brand{
+    padding-top:0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Seccion about */
+.site-about{
+    margin-top: 50px;
+    font-size: 15px;
+}
+
+.site-about p{
+    text-align: justify;
+    margin-right: 15%;
+    margin-left: 5%;
+}
+
+/* Seccion contact */
+.site-contact{
+    margin-top: 20px;
+    margin-left: 20%;
+    font-size: 13px;
+}
+
+.site-contact .row{
+    margin-left: 50px;;
+
+}
+
+.site-contact .row .col-lg-6{
+    margin-left: 35px;
+    margin-top: 10px;
 }

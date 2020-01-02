@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Subcategories';
-$this->params['breadcrumbs'][] = $this->title;
+/* $this->params['breadcrumbs'][] = $this->title; */
 ?>
 <div class="subcategory-index">
 
