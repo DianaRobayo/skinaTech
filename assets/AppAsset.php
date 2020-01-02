@@ -21,7 +21,8 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'bootstrap/css/bootstrap.min.css',
-        'css/site.css',        
+        'css/site.css', 
+        'css/vista-tablas.css'       
     ];
     public $js = [
         'bootstrap/js/bootstrap.min.js'

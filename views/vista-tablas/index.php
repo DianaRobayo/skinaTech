@@ -8,34 +8,17 @@ echo 'hola'; */
 ?>
 
 <!-- CATEGORIAS -->
+<h1 align="center" class="titulo">CATEGORIAS</h1>
 
-<div class="card" style="width: 30rem;">
+<div class="row">
+  <?php foreach ($categorys as $i => $category) { ?>
 
-  <!-- <div class="card-deck">
-    <div class="card">
-      <img src="..." alt="..." class="img-circle">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
+    <div class="col">
+      <a href="<?php echo $base_url; ?>vista-tablas/subcategory?id_category=<?php echo $category->id; ?>">
+        <img src="<?php echo $category->image; ?>" alt="Categoria" style="width: 100%;" class="img-circle">
+      </a>
+      <h5> <?php echo $category->name; ?></h5>      
     </div>
-
-  </div> -->
-
-  <div class="card-header">
-    Categoria
-  </div>
-  <ul class="list-group list-group-flush">
-    <?php foreach ($categorys as $i => $category) { ?>
-      <li class="list-group-item">
-        <a href="<?php echo $base_url; ?>vista-tablas/subcategory?id_category=<?php echo $category->id; ?>">
-          <?php echo $category->name; ?>
-        </a>
-      </li>
-    <?php
-    } ?>
-  </ul>
+  <?php
+  } ?>
 </div>

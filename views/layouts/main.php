@@ -16,31 +16,31 @@ $baseUrl =  Url::home();
 
 // Seccion de los items
 $items = [
-  ['label' => 'Home', 'url' => ['/site/index'], 'options' => ['class' => 'clase-nueva']],
-  ['label' => 'About', 'url' => ['/site/about']],
-  ['label' => 'Contact', 'url' => ['/site/contact']]
+  ['label' => 'Inicio', 'url' => ['/site/index'], 'options' => ['class' => 'clase-nueva']],
+  ['label' => 'Acerca de', 'url' => ['/site/about']],
+  ['label' => 'Registrar', 'url' => ['/site/contact']]
 ];
 
 if(Yii::$app->user->isGuest){
-  $items[] = ['label' => 'Login', 'url' => ['/site/login']];
+  $items[] = ['label' => 'Iniciar Sesion', 'url' => ['/site/login']];
 
 } else {  
   //$items[] = ['label' => 'Logout', 'url' => [$baseUrl . 'users/update?id=' .  Yii::$app->user->identity->id]];
   
   if(Yii::$app->user->identity->rol == 2){
-    $items[] = ['label' => 'Edit Perfil', 'url' => ['/users/update?id=' .  Yii::$app->user->identity->id]];
-    $items[] = ['label' => 'Category', 'url' => ['/vista-tablas']];
+    $items[] = ['label' => 'Editar Perfil', 'url' => ['/users/update?id=' .  Yii::$app->user->identity->id]];
+    $items[] = ['label' => 'Categorias', 'url' => ['/vista-tablas']];
     
   } else {
-    $items[] = ['label' => 'Category', 'url' => ['/category']];
-    $items[] = ['label' => 'Subcategory', 'url' => ['/subcategory']];
-    $items[] = ['label' => 'Product', 'url' => ['/product']];
-    $items[] = ['label' => 'Users', 'url' => ['/users']];
+    $items[] = ['label' => 'Categorias', 'url' => ['/category']];
+    $items[] = ['label' => 'Subcategorias', 'url' => ['/subcategory']];
+    $items[] = ['label' => 'Productos', 'url' => ['/product']];
+    $items[] = ['label' => 'Usuarios', 'url' => ['/users']];
   }
 
   $items[] = Html::beginForm(['/site/logout'], 'post');
   $items[] = Html::submitButton(
-    'Logout (' . Yii::$app->user->identity->name . ')', //Retorna el nombre del usuario al iniciar sesion
+    'Cerrar Sesion (' . Yii::$app->user->identity->name . ')', //Retorna el nombre del usuario al iniciar sesion
     ['class' => 'btn btn-link logout', 'id' => 'logout']
   );
   $items[] = Html::endForm();
@@ -71,7 +71,7 @@ AppAsset::register($this);
 <div class="wrap">
   <?php
     NavBar::begin([
-        'brandLabel' => 'SKINATECH', //Yii::$app->name,
+        'brandLabel' => 'NEW TECH', //Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top',

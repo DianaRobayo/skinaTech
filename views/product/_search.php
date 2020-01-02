@@ -23,6 +23,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_subcategory') ?>
 
+    <?= $form->field($model, 'image') ?>
+
+    <?php // echo $form->field($model, 'quantity') ?>
+
+    <?php // echo $form->field($model, 'description') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>

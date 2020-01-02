@@ -43,11 +43,11 @@ $baseUrl =  Url::home();
   </div>
 
   <div class="body-content">
-    <h2 class='productos'>Productos</h2>
+    <h2 class='categorias'>Categorias</h2>
     <div class="row">
 
       <!-- Redes -->
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <h2>Redes</h2>
 
         <div class="card" style="width: 21rem;">
@@ -64,7 +64,7 @@ $baseUrl =  Url::home();
       </div>
 
       <!-- Movil -->
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <h2>Movil</h2>
 
         <div class="card" style="width: 21rem;">
@@ -81,7 +81,7 @@ $baseUrl =  Url::home();
       </div>
 
       <!-- Computación -->
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <h2>Computación</h2>
 
         <div class="card" style="width: 21rem;">
@@ -92,22 +92,6 @@ $baseUrl =  Url::home();
             <li class="list-group-item">Accesorios y partes para computadores</li>
             <li class="list-group-item">La marca de diferentes proveedores</li>
             <li class="list-group-item">10 meses de garantia</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Electrodomesticos -->
-      <div class="col-lg-3">
-        <h2>Electrodomésticos</h2>
-
-        <div class="card" style="width: 21rem;">
-          <a href=" <?php echo $baseUrl . 'vista-tablas/subcategory?id_category=4'; ?>">
-            <?php echo Html::img('@web/img/electrodomestico2.jpg', ["width" => "250PX", "height" => "165px"]) ?>
-          </a>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Productos de buena calidad</li>
-            <li class="list-group-item">Marca Samsung y LG</li>
-            <li class="list-group-item">Un año de garantia</li>
           </ul>
         </div>
       </div>

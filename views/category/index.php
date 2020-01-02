@@ -29,6 +29,7 @@ $this->title = 'Categories';
             'id',
             'name',
             'state',
+            'image',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

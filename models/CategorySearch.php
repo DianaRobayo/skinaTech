@@ -18,7 +18,7 @@ class CategorySearch extends Category
     {
         return [
             [['id', 'state'], 'integer'],
-            [['name'], 'safe'],
+            [['name', 'image'], 'safe'],
         ];
     }
 
@@ -62,7 +62,8 @@ class CategorySearch extends Category
             'state' => $this->state,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'image', $this->image]);
 
         return $dataProvider;
     }

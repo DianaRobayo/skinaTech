@@ -11,6 +11,9 @@ use Yii;
  * @property string $name
  * @property int $id_category
  * @property int $id_subcategory
+ * @property string $image
+ * @property string|null $quantity
+ * @property string|null $description
  *
  * @property Category $category
  * @property Subcategory $subcategory
@@ -31,9 +34,11 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'id_category', 'id_subcategory'], 'required'],
+            [['name', 'id_category', 'id_subcategory', 'image'], 'required'],
             [['id_category', 'id_subcategory'], 'integer'],
-            [['name'], 'string', 'max' => 45],
+            [['name', 'quantity'], 'string', 'max' => 45],
+            [['image'], 'string', 'max' => 100],
+            [['description'], 'string', 'max' => 255],
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['id_category' => 'id']],
             [['id_subcategory'], 'exist', 'skipOnError' => true, 'targetClass' => Subcategory::className(), 'targetAttribute' => ['id_subcategory' => 'id']],
         ];
@@ -49,6 +54,9 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Name',
             'id_category' => 'Id Category',
             'id_subcategory' => 'Id Subcategory',
+            'image' => 'Image',
+            'quantity' => 'Quantity',
+            'description' => 'Description',
         ];
     }
 

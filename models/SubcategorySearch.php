@@ -18,7 +18,7 @@ class SubcategorySearch extends Subcategory
     {
         return [
             [['id', 'state', 'quantity', 'id_category'], 'integer'],
-            [['name'], 'safe'],
+            [['name', 'image'], 'safe'],
         ];
     }
 
@@ -64,7 +64,8 @@ class SubcategorySearch extends Subcategory
             'id_category' => $this->id_category,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'image', $this->image]);
 
         return $dataProvider;
     }

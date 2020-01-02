@@ -12,6 +12,7 @@ use Yii;
  * @property int|null $state
  * @property int|null $quantity
  * @property int $id_category
+ * @property string|null $image
  *
  * @property Product[] $products
  * @property Category $category
@@ -34,7 +35,7 @@ class Subcategory extends \yii\db\ActiveRecord
         return [
             [['name', 'id_category'], 'required'],
             [['state', 'quantity', 'id_category'], 'integer'],
-            [['name'], 'string', 'max' => 45],
+            [['name', 'image'], 'string', 'max' => 45],
             [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['id_category' => 'id']],
         ];
     }
@@ -50,6 +51,7 @@ class Subcategory extends \yii\db\ActiveRecord
             'state' => 'State',
             'quantity' => 'Quantity',
             'id_category' => 'Id Category',
+            'image' => 'Image',
         ];
     }
 

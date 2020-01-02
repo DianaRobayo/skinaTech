@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property int|null $state
+ * @property string|null $image
  *
  * @property Product[] $products
  * @property Subcategory[] $subcategories
@@ -33,6 +34,7 @@ class Category extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['state'], 'integer'],
             [['name'], 'string', 'max' => 45],
+            [['image'], 'string', 'max' => 100],
         ];
     }
 
@@ -45,6 +47,7 @@ class Category extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'state' => 'State',
+            'image' => 'Image',
         ];
     }
 
