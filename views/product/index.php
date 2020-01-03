@@ -31,8 +31,8 @@ $this->title = 'Products';
             'id_category',
             'id_subcategory',
             'image',
-            //'quantity',
-            //'description',
+            'quantity',
+            'description',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

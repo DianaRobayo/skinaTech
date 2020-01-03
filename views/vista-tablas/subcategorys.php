@@ -15,7 +15,7 @@ exit;
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <a href="<?php echo $base_url; ?>vista-tablas/products?id_subcategory=<?php echo $subcategory->id; ?>">
+          <a href="<?php echo $base_url.'?r=vista-tablas/products&id_subcategory='.$subcategory->id; ?>">
             <h5 class="card-title"><?php echo $subcategory->name; ?></h5>
           </a>
           <p class="card-text">Revisa nuestros productos y disponibilidad.</p>

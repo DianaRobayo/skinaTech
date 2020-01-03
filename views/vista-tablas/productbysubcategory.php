@@ -15,7 +15,7 @@ exit;
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <a href="<?php echo $base_url; ?>vista-tablas/product?id_product=<?php echo $product->id; ?>">
+          <a href="<?php echo $base_url.'?r=vista-tablas/product&id_product='.$product->id; ?>">
             <h5 class="card-title"><?php echo $product->name; ?></h5>
           </a>
         </div>

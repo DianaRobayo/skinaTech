@@ -28,9 +28,9 @@ if(Yii::$app->user->isGuest){
   //$items[] = ['label' => 'Logout', 'url' => [$baseUrl . 'users/update?id=' .  Yii::$app->user->identity->id]];
   
   if(Yii::$app->user->identity->rol == 2){
-    $items[] = ['label' => 'Editar Perfil', 'url' => ['/users/update?id=' .  Yii::$app->user->identity->id]];
+    $items[] = ['label' => 'Editar Perfil', 'url' => ['user/update?id=' .  Yii::$app->user->identity->id]];
     $items[] = ['label' => 'Categorias', 'url' => ['/vista-tablas']];
-    
+    //index.php?r=site%2Fabout
   } else {
     $items[] = ['label' => 'Categorias', 'url' => ['/category']];
     $items[] = ['label' => 'Subcategorias', 'url' => ['/subcategory']];
@@ -46,9 +46,9 @@ if(Yii::$app->user->isGuest){
   $items[] = Html::endForm();
 
   /* echo '<pre>';
-  print_r(Yii::$app->name);
-  exit;
- */
+  print_r($items);
+  exit; */
+
 }
 
 
@@ -103,7 +103,6 @@ AppAsset::register($this);
             )
         ] */,
         'options' => ['class' => 'navbar navbar-dark bg-dark'],
-        //navbar navbar-dark bg-dark
         //navbar-nav navbar-left
         
     ]);

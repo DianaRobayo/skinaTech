@@ -51,7 +51,7 @@ $baseUrl =  Url::home();
         <h2>Redes</h2>
 
         <div class="card" style="width: 21rem;">
-          <a href=" <?php echo $baseUrl . 'vista-tablas/subcategory?id_category=1'; ?>">
+          <a href=" <?php echo $baseUrl . '?r=vista-tablas/subcategory&id_category=1'; ?>">
             <?php echo Html::img('@web/img/red2.jpg', ["width" => "250px"]) ?>
           </a>
           <ul class="list-group list-group-flush">
@@ -68,7 +68,7 @@ $baseUrl =  Url::home();
         <h2>Movil</h2>
 
         <div class="card" style="width: 21rem;">
-          <a href=" <?php echo $baseUrl . 'vista-tablas/subcategory?id_category=2'; ?>">
+          <a href=" <?php echo $baseUrl . '?r=vista-tablas/subcategory&id_category=2'; ?>">
             <?php echo Html::img('@web/img/movil.jpg', ["width" => "250PX", "height" => "165px"]) ?>
           </a>
           <ul class="list-group list-group-flush">
@@ -85,7 +85,7 @@ $baseUrl =  Url::home();
         <h2>Computación</h2>
 
         <div class="card" style="width: 21rem;">
-          <a href=" <?php echo $baseUrl . 'vista-tablas/subcategory?id_category=3'; ?>">
+          <a href=" <?php echo $baseUrl . '?r=vista-tablas/subcategory&id_category=3'; ?>">
             <?php echo Html::img('@web/img/computacion.jpg', ["width" => "250PX"]) ?>
           </a>
           <ul class="list-group list-group-flush">

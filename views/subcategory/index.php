@@ -31,6 +31,7 @@ $this->title = 'Subcategories';
             'state',
             'quantity',
             'id_category',
+            'image',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
