@@ -8,10 +8,16 @@ use Yii;
  * This is the model class for table "users".
  *
  * @property int $id
+ * @property string $identification 
  * @property string $name
  * @property int|null $state
  * @property string|null $password
  * @property int $rol
+ * @property string $email 
+ * @property string $address 
+ * @property int $code 
+ * @property string $phone 
+ * @property string $date 
  */
 class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface{
 
@@ -36,10 +42,14 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface{
     {
         return [
             [['name', 'rol'], 'required'],
-            [['state', 'rol'], 'integer'],
+            [['state', 'rol', 'code'], 'integer'],
             [['name'], 'string', 'max' => 45],
             [['password'], 'string', 'max' => 250],
             [['email'], 'string', 'max' => 255],
+            [['date'], 'safe'],
+            [['identification'], 'string', 'max' => 20],
+            [['address'], 'string', 'max' => 200],
+            [['phone'], 'string', 'max' => 12],
         ];
     }
 
@@ -50,11 +60,16 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface{
     {
         return [
             'id' => 'ID',
+            'identification' => 'Identification',
             'name' => 'Name',
             'state' => 'State',
             'password' => 'Password',
             'rol' => 'Rol',
             'email' => 'Email',
+            'address' => 'Address',
+            'code' => 'Code',
+            'phone' => 'Phone',
+            'date' => 'Date', 
         ];
     }
 

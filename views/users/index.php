@@ -27,10 +27,16 @@ $this->title = 'Users';
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            'identification', 
             'name',
             'state',
             'password',
             'rol',
+            //'email:email',
+            //'address',
+            //'code',
+            //'phone',
+            //'date',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

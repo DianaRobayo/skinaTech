@@ -25,9 +25,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'image') ?>
 
+    <?php // echo $form->field($model, 'brand') ?>
+
     <?php // echo $form->field($model, 'quantity') ?>
 
     <?php // echo $form->field($model, 'description') ?>
+
+    <?php // echo $form->field($model, 'price') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
