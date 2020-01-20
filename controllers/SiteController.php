@@ -9,6 +9,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\RegisterForm; //modelo registro
+use app\models\Users; //modelo registro
+
 
 class SiteController extends Controller
 {
@@ -108,7 +111,8 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $model = new ContactForm();
+        $model = new ContactForm();        
+
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
@@ -118,6 +122,44 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    
+    /**
+     * Displays contact page.
+     *
+     * @return Response|string
+     */
+    public function actionRegister()
+    {        
+        //Se crea el formulario del registro
+        $model = new RegisterForm();
+
+        if ($model->load(Yii::$app->request->post())   /*  && $model->validate() */) {
+
+            //Se instancia el modelo Users para almacenar los datos del formulario
+            //en la DB, con la encriptacion de la clave. El rol y name son obligatorios.
+            $dataUser = new Users();
+            $dataUser->name = $model->name;
+            $dataUser->password = crypt($model->password, '<R><aq2kT,+h349:');
+            $dataUser->rol= 2;
+            $dataUser->state= 1;
+            $dataUser->email= $model->email;
+
+            //Cuando se guarda el registro se envia un setFlash para mostrar el mensaje valido
+            if($dataUser->save()) Yii::$app->session->setFlash('success', "El registro fue realizado correctamente."); 
+            else Yii::$app->session->setFlash('error', "Usuario no registrado");
+            /* echo '<pre>';
+            var_dump($dataUser->password);
+            exit; */
+
+            return $this->render('register_confirm', ['model' => $model]);
+
+        } else {
+            // la página es mostrada inicialmente o hay algún error de validación            
+            return $this->render('register', ['model' => $model]);
+        }
+    }
+
 
     /**
      * Displays about page.

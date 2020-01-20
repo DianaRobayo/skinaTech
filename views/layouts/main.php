@@ -18,7 +18,8 @@ $baseUrl =  Url::home();
 $items = [
   ['label' => 'Inicio', 'url' => ['/site/index'], 'options' => ['class' => 'clase-nueva']],
   ['label' => 'Acerca de', 'url' => ['/site/about']],
-  ['label' => 'Registrar', 'url' => ['/site/contact']]
+  ['label' => 'Contacto', 'url' => ['/site/contact']],
+  ['label' => 'Registro', 'url' => ['/site/register']]   //temporal del registro 
 ];
 
 if(Yii::$app->user->isGuest){
@@ -80,28 +81,7 @@ AppAsset::register($this);
         ],
     ]); 
     echo Nav::widget([
-        'items' => $items /* [
-            
-            ['label' => 'Home', 'url' => ['/site/index'],'options' => ['class'=>'clase-nueva']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'.
-                    '<a href="/skinatech/web/users/update?id='.  Yii::$app->user->identity->id .'">'.
-                    'Editar Perfil</a>'.
-                '</li>'.
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->name . ')', //Retorna el nombre del usuario al iniciar sesion
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ] */,
+        'items' => $items ,
         'options' => ['class' => 'navbar navbar-dark bg-dark'],
         //navbar-nav navbar-left
         

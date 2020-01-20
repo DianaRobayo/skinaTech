@@ -46,8 +46,9 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-
-            if (!$user || !$user->validatePassword($this->password)) {
+            
+            //Se verifica el usuario y la contraseña enccriptada
+            if (!$user || !$user->validatePassword(crypt($this->password, '<R><aq2kT,+h349:'))) {
                 $this->addError($attribute, 'Incorrect username or password.');
             }
         }

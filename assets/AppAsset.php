@@ -25,7 +25,8 @@ class AppAsset extends AssetBundle
         'css/vista-tablas.css'       
     ];
     public $js = [
-        'bootstrap/js/bootstrap.min.js'
+        'bootstrap/js/bootstrap.min.js',
+        'js/form.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
